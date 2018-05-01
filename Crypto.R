@@ -39,7 +39,7 @@ function(){
   
 }
 
-##Iterate through files to obtain prices of coins greater than 1000$
+##Iterate through files to obtain prices of coins greater than 1000$ Unfinished
 setwd("C:/Users/Saurabh/Desktop/8th Sem Project/Data")
 file.list <- list.files(path="C:/Users/Saurabh/Desktop/8th Sem Project/Data")
 highCoins = c()
@@ -48,7 +48,7 @@ for (i in 1:length(file.list)){
   max.value <-max(file.df$High,na.rm=TRUE)
   if(max.value >= 1000)
   {
-    highCoins <- c(highCoins,file.df$coin)
+    highCoins <- c(highCoins,as.character(file.df$coin[1]))
     next
   }
 }

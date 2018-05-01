@@ -38,3 +38,18 @@ function(){
   length(df_uniq)
   
 }
+
+##Iterate through files to obtain prices of coins greater than 1000$
+setwd("C:/Users/Saurabh/Desktop/8th Sem Project/Data")
+file.list <- list.files(path="C:/Users/Saurabh/Desktop/8th Sem Project/Data")
+highCoins = c()
+for (i in 1:length(file.list)){
+  file.df <- read.csv(file.list[i],header = TRUE)
+  max.value <-max(file.df$High,na.rm=TRUE)
+  if(max.value >= 1000)
+  {
+    highCoins <- c(highCoins,file.df$coin)
+    next
+  }
+}
+length(highCoins)

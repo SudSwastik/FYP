@@ -1,0 +1,21 @@
+---
+title: "btc"
+author: "Saurabh Prakash"
+date: "4 May 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r Setting wd, loading data and plotting the graph using ggplot2}
+  setwd("C:/Users/Saurabh/Desktop/8th Sem Project/Data")
+  btcData <- read.csv('BTC.csv')
+  btcData$Date<-as.character(btcData$Date)
+  btcData$Date <- as.Date(btcData$Date,format='%Y-%m-%d')
+  library(plotly)
+  plot_ly(x=btcData$Date,y=btcData$High,type='scatter',mode='lines')
+```
+
+Observations : The btc Price did not incerease or fluctuate significantly upto the year 2017. The little fluctuation that we see before 2017 was around 2014. After 2017, we see a lot of fluctuations in the price.

@@ -152,3 +152,12 @@ ggplot(total.file[total.file$Delta > 1  & total.file$Delta < 10, ], aes(x=Delta,
   theme(legend.position="none")
 
 
+#distribution of the count of all coins delta whose value is less than  1
+ggplot(total.file[total.file$Delta <1, ], aes(x=Delta, color=coin)) +
+  geom_histogram() +
+  theme(legend.position="none")
+
+#distribution of the count of all coins delta whose value is less than 0
+ggplot(total.file[total.file$Delta <0, ], aes(x=Delta, color=coin)) +
+  geom_histogram() +
+  theme(legend.position="none")

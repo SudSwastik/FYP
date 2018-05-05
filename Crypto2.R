@@ -146,4 +146,9 @@ for(y in c("2014","2015","2016","2017","2018")){
 
 
 
+#distribution of the count of all coins delta whose value exceeds 1
+ggplot(total.file[total.file$Delta > 1  & total.file$Delta < 10, ], aes(x=Delta, color=coin)) +
+  geom_histogram() +
+  theme(legend.position="none")
+
 

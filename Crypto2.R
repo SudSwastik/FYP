@@ -195,3 +195,10 @@ colnames(df1)<-c("BTC","BCH","DOGE","ETH","KIN")
 df1
 df1$month <- c("jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec")
 df1
+
+# bar graph of monthly delta value
+ggplot(data= df1,aes(y=df1$BTC,x=df1$month))+geom_bar(stat='identity')
+ggplot(data= df1,aes(y=df1$BCH,x=df1$month))+geom_bar(stat='identity')
+ggplot(data= df1,aes(y=df1$DOGE,x=df1$month))+geom_bar(stat='identity')
+ggplot(data= df1,aes(y=df1$ETH,x=df1$month))+geom_bar(stat='identity')
+ggplot(data= df1,aes(y=df1$BTC,x=df1$month))+geom_bar(stat='identity') 

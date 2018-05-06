@@ -161,3 +161,27 @@ ggplot(total.file[total.file$Delta <1, ], aes(x=Delta, color=coin)) +
 ggplot(total.file[total.file$Delta <0, ], aes(x=Delta, color=coin)) +
   geom_histogram() +
   theme(legend.position="none")
+
+
+#calculating all the monthly delta for the whole year of top 5 coin 
+#by market share
+
+coin.name<-c("BTC","BCH","DOGE","ETH","KIN")
+
+total.delta.yearly.2017$Month<- as.numeric(total.delta.yearly.2017$Month)
+total.delta.yearly.2017
+
+typeof(coin.name)
+
+f<-list()
+for(c in coin.name){
+  monthly.delta=c()
+  for(i in 1:12){
+    total.delta.yearly.2017.months<-total.delta.yearly.2017%>%filter(coin==c)%>%filter(Month==i)%>%summarise(TotalSum=sum(Delta))
+    monthly.delta[i]<-total.delta.yearly.2017.months
+  }
+  f[[c]]<-monthly.delta
+  
+}
+
+f

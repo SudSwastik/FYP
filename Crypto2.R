@@ -185,3 +185,13 @@ for(c in coin.name){
 }
 
 f
+
+#converting list to df
+df1 <- data.frame(matrix(unlist(f), nrow=5, byrow=T),stringsAsFactors=FALSE)
+df1
+df1 <- as.data.frame(t(df1))
+df1
+colnames(df1)<-c("BTC","BCH","DOGE","ETH","KIN")
+df1
+df1$month <- c("jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec")
+df1

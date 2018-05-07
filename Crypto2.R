@@ -1,7 +1,17 @@
 setwd("C:/Users/saurabh/FYP/Data2")
 getwd()
-library("dplyr")
-library("ggplot2")
+library(dplyr)
+library(ggplot2)
+library(readr)
+library(plyr)
+library(scales)
+library(gridExtra)
+library(grid)
+library(reshape2)
+library(zoo)
+
+
+
 coinData<- read.csv('$$$.csv')
 btcData <- read.csv('btc.csv')
 ethData <- read.csv('ETH.csv')
@@ -58,7 +68,10 @@ multiple.timeseries.coin<- function(ethData,btcData){
     geom_line()
   
 }
-<<<<<<< HEAD
+
+multiple.timeseries.coin(ethData,btcData)
+
+
 
 ##Iterate through files to obtain prices of coins greater than 1000$ Unfinished
 setwd("C:/Users/Saurabh/Desktop/8th Sem Project/Data")
@@ -86,8 +99,26 @@ df1$market_cap_usd <- as.numeric(df1$market_cap_usd)
 df1$formatted_market_cap <-  paste0(df1$id,'\n','$',format(df1$market_cap_usd,big.mark = ',',scientific = F, trim = T))
 treemap(df1, index = 'formatted_market_cap', vSize = 'market_cap_usd', title = 'Cryptocurrency Market Cap', fontsize.labels=c(12, 8), palette='RdYlGn')
 
-=======
-multiple.timeseries.coin(ethData,btcData)
->>>>>>> 9dc380f1a1197eb0f7313ac6a35f822e4c594f5a
+
+
+
+total.file<- read.csv("C:/Users/sudarshan/FYP/Data/CryptocoinsHistoricalPrices.csv")
+length(total.file$High)
+head(total.file)
+
+#changed date from Numeric to charcter
+total.file$Date<-as.character(total.file$Date)
+
+#changed date from character to Date format
+total.file$Date <- as.Date(total.file$Date,format='%Y-%m-%d')
+total.file$Date
+
+#added new column year and month to the dataset
+new.total.file<- total.file %>% mutate(Year= format(as.Date(total.file$Date, format="%Y-%m-%d"),"%Y"))%>%
+  mutate(Month=format(as.Date(total.file$Date, format="%Y-%m-%d"),"%m"))
+
+head(new.total.file)
+summary(new.total.file)
+
 
 

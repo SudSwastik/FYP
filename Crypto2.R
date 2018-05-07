@@ -122,3 +122,28 @@ summary(new.total.file)
 
 
 
+
+
+
+#created a vector for taking yearly delta of all coin 
+year<-c("2014","2015","2016","2017","2018")
+typeof(year)
+
+
+typeof(new.total.file$Year)
+
+
+#plot for analysing the distribution of the delta of all coins 
+#in a yearly format
+for(y in c("2014","2015","2016","2017","2018")){
+  delta.yearly<-new.total.file%>%group_by(Year)%>%filter(Year==y)
+  delta.yearly
+  print(ggplot(delta.yearly[delta.yearly$Delta > 1  & delta.yearly$Delta < 10, ], aes(x=Date,y=Delta, color=coin)) +
+          geom_point()+ scale_x_date(date_breaks = "1 month", date_labels = "%B")+
+          theme(legend.position="none"))
+}
+
+
+
+
+

@@ -1,0 +1,34 @@
+---
+title: "home"
+author: "Saurabh Prakash"
+date: "6 May 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+As we have seen above, the top 4 Cryptocurrencies by their Market Cap are Bitcoin(btc), Butcoin Cash(bch), Etherium(eth) and Litecoin(ltc).
+
+So here we plot a graph showing the higest price attained by each of these Cryptocurrencies over a span of some years.
+
+```{r Price vs Date graph of Top 4 Cryptocurrencies}
+  setwd("C:/Users/Saurabh/Desktop/8th Sem Project/Data")
+  btcData <- read.csv('btc.csv')
+  btcData$Date<-as.character(btcData$Date)
+  btcData$Date <- as.Date(btcData$Date,format='%Y-%m-%d')
+  ethData <- read.csv('ETH.csv')
+  ethData$Date<-as.character(ethData$Date)
+  ethData$Date <- as.Date(ethData$Date,format='%Y-%m-%d')
+  bchData <- read.csv('BCH.csv')
+  bchData$Date<-as.character(bchData$Date)
+  bchData$Date <- as.Date(bchData$Date,format='%Y-%m-%d')
+  ltcData <- read.csv('LTC.csv')
+  ltcData$Date<-as.character(ltcData$Date)
+  ltcData$Date <- as.Date(ltcData$Date,format='%Y-%m-%d')
+  library(dplyr)
+  df1<- btcData %>%bind_rows(ethData,bchData,ltcData)
+  library(plotly)
+  plot_ly(x=df1$Date,y=df1$High,type='scatter',mode='lines',color=df1$coin)
+```
+

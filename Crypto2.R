@@ -1,4 +1,4 @@
-setwd("C:/Users/saurabh/FYP/Data2")
+setwd("C:/Users/Saurabh/Desktop/FYP/Data2")
 getwd()
 library(dplyr)
 library(ggplot2)
@@ -11,52 +11,47 @@ library(reshape2)
 library(zoo)
 
 
-
-coinData<- read.csv('$$$.csv')
+btcData<- read.csv('btc.csv')
 btcData <- read.csv('btc.csv')
 ethData <- read.csv('ETH.csv')
-head(coinData)
-head(btcData)
-typeof(coinData$Date)
-coinData$Date<-as.character(coinData$Date)
-typeof(coinData$Date)
-coinData$Date <- as.Date(coinData$Date,format='%Y-%m-%d')
+DogeData <- read.csv('Doge.csv')
+KinData <- read.csv('KIN.csv')
+
+btcData$Date<-as.character(btcData$Date)
+btcData$Date <- as.Date(btcData$Date,format='%Y-%m-%d')
 
 
 ethData$Date<-as.character(ethData$Date)
-typeof(ethData$Date)
 ethData$Date <- as.Date(ethData$Date,format='%Y-%m-%d')
 
 
-btcData$Date<-as.character(btcData$Date)
-typeof(btcData$Date)
-btcData$Date <- as.Date(btcData$Date,format='%Y-%m-%d')
+bchData$Date<-as.character(bchData$Date)
+bchData$Date <- as.Date(bchData$Date,format='%Y-%m-%d')
 
-class(coinData$Date)
-head(coinData)
+DogeData$Date<-as.character(DogeData$Date)
+DogeData$Date <- as.Date(DogeData$Date,format='%Y-%m-%d')
+
+KinData$Date<-as.character(KinData$Date)
+KinData$Date <- as.Date(KinData$Date,format='%Y-%m-%d')
 
 openData <-  function(coinData){
   qplot(data=coinData,x=Date,y=Open)
 }
-openData(coinData)
 
 closeData <-  function(coinData){
   ggplot(data=coinData,aes(x=coinData$Date))+
     geom_line(aes(y=coinData$Close),color="blue")
 }
-closeData(coinData)
 
 highData <-  function(coinData){
   ggplot(data=coinData,aes(x=coinData$Date))+
     geom_line(aes(y=coinData$High),color="green")
 }
-highData(coinData)
 
 lowData <-  function(coinData){
   ggplot(data=coinData,aes(x=coinData$Date))+
     geom_line(aes(y=coinData$Low),color="yellow")
 }
-lowData(coinData)
 
 
 multiple.timeseries.coin<- function(ethData,btcData){

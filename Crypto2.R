@@ -201,4 +201,22 @@ ggplot(data= df1,aes(y=df1$BTC,x=df1$month))+geom_bar(stat='identity')
 ggplot(data= df1,aes(y=df1$BCH,x=df1$month))+geom_bar(stat='identity')
 ggplot(data= df1,aes(y=df1$DOGE,x=df1$month))+geom_bar(stat='identity')
 ggplot(data= df1,aes(y=df1$ETH,x=df1$month))+geom_bar(stat='identity')
-ggplot(data= df1,aes(y=df1$BTC,x=df1$month))+geom_bar(stat='identity') 
+ggplot(data= df1,aes(y=df1$BTC,x=df1$month))+geom_bar(stat='identity')
+
+
+
+
+# checking outliers of open column for btc
+BTC <- new.total.file%>%filter(coin=="BTC")%>%filter(Year==2014)
+Open<-BTC$Open
+
+boxplot(Open,
+        horizontal = TRUE,
+        las=1,
+        notch = TRUE,
+        col="slategray3",
+        ylim=c(100,1000),
+        boxwex=0.5,
+        whisklty=1,
+        main="Opening of btc for the year 2014"
+        ,xlab="btc high ")

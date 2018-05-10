@@ -9,10 +9,11 @@ library(gridExtra)
 library(grid)
 library(reshape2)
 library(zoo)
+library(plotly)
 
 
 btcData<- read.csv('btc.csv')
-btcData <- read.csv('btc.csv')
+bchData <- read.csv('bch.csv')
 ethData <- read.csv('ETH.csv')
 DogeData <- read.csv('Doge.csv')
 KinData <- read.csv('KIN.csv')
@@ -35,25 +36,53 @@ KinData$Date<-as.character(KinData$Date)
 KinData$Date <- as.Date(KinData$Date,format='%Y-%m-%d')
 
 openData <-  function(coinData){
-  qplot(data=coinData,x=Date,y=Open)
+  print(ggplot(data=coinData,aes(x=coinData$Date,y=coinData$Close))+
+          geom_line(color="blue"))
 }
 
 closeData <-  function(coinData){
-  ggplot(data=coinData,aes(x=coinData$Date))+
-    geom_line(aes(y=coinData$Close),color="blue")
+  print(ggplot(data=coinData,aes(x=coinData$Date,y=coinData$Close))+
+          geom_line(color="yellow"))
 }
-
 highData <-  function(coinData){
-  ggplot(data=coinData,aes(x=coinData$Date))+
-    geom_line(aes(y=coinData$High),color="green")
+  print(ggplot(data=coinData,aes(x=coinData$Date,y=coinData$High))+
+          geom_line(color="red"))
 }
 
 lowData <-  function(coinData){
-  ggplot(data=coinData,aes(x=coinData$Date))+
-    geom_line(aes(y=coinData$Low),color="yellow")
+  print(ggplot(data=coinData,aes(x=coinData$Date,y=coinData$Low))+
+          geom_line(color="green"))
 }
 
+openData(btcData)
+closeData(btcData)
+lowData(btcData)
+highData(btcData)
 
+openData(bchData)
+closeData(bchData)
+lowData(bchData)
+highData(bchData)
+
+openData(ethData)
+closeData(ethData)
+lowData(ethData)
+highData(ethData)
+
+openData(DogeData)
+closeData(DogeData)
+lowData(DogeData)
+highData(DogeData)
+
+openData(KinData)
+closeData(KinData)
+lowData(KinData)
+highData(KinData)
+
+
+
+
+#Redundant
 multiple.timeseries.coin<- function(ethData,btcData){
   
   merged.dataframe<- ethData %>%
@@ -68,7 +97,7 @@ multiple.timeseries.coin(ethData,btcData)
 
 
 
-##Iterate through files to obtain prices of coins greater than 1000$ Unfinished
+##Iterate through files to obtain prices of coins greater than 1000$
 setwd("C:/Users/Saurabh/Desktop/8th Sem Project/Data")
 file.list <- list.files(path="C:/Users/Saurabh/Desktop/8th Sem Project/Data")
 highCoins = c()
@@ -82,6 +111,7 @@ for (i in 1:length(file.list)){
   }
 }
 length(highCoins)
+highCoins
 
 ##Treemap
 library(coinmarketcapr)

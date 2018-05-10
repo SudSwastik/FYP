@@ -8,11 +8,44 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-As we have seen above, the top 4 Cryptocurrencies by their Market Cap are Bitcoin(btc), Butcoin Cash(bch), Etherium(eth) and Litecoin(ltc).
+We have a data containing data of 1320 types of Cryptocurrencies. This data contains about 65000 observations of 10 variables. These 10 variables are Date, Open, High, Low, Close, Volume, Market.Cap, coin and Delta.
 
-So here we plot a graph showing the higest price attained by each of these Cryptocurrencies over a span of some years.
+######Date       : Date of observation
+######Open       : Opening price on the given day
+######High       : Highest price on the given day
+######Low        : Lowest price on the given day
+######Close      : Closing price on the given day
+######coin       : Name of the cryptocurrency
+######Volume     : Volume of transactions on the given day
+######Market Cap : Market capitalization in USD
 
-```{r Price vs Date graph of Top 4 Cryptocurrencies}
+So to find out the most dominant Cryptocurrencies in the market, we plotted a bar graph of the Top 5 Cryptocurrencies in the market.
+
+```{r}
+  setwd("C:/Users/Saurabh/Desktop/8th Sem Project/Data")
+  file.list <- list.files(path="C:/Users/Saurabh/Desktop/8th Sem Project/Data")
+  coinName = c()
+  highestMarketCap = c()
+  for (i in 1:length(file.list)){
+    file.df <- read.csv(file.list[i],header = TRUE)
+    maxVal <- gsub(",","",max(as.character(file.df$Market.Cap)))
+    maxVal <- as.numeric(maxVal)
+    highestMarketCap <- c(highestMarketCap,maxVal)
+    coinName <- c(coinName, as.character(file.df$coin[[1]]))
+  }
+  newdf <- data.frame(coinName,highestMarketCap)
+  library(dplyr)
+  newdf <- arrange(newdf,coinName,highestMarketCap)
+  newdf <- arrange(newdf,desc(highestMarketCap))
+  topfive <- newdf[seq(1:5),]
+  library(ggplot2)
+  ggplot(topfive, aes(x=topfive$coinName,y = topfive$highestMarketCap,fill=topfive$coinName))     +geom_bar(stat = "identity")+xlab("Coins")+ylab("Market Cap")+ggtitle("Top 5 Cryptocurrencies")
+```
+As we have seen above, the top 4 Cryptocurrencies by their Market Cap are Bitcoin(btc), Bitcoin Cash(bch), Etherium(ETH), DOGEE and KIN.
+
+So here we plot a graph showing the highest price attained by each of these Cryptocurrencies over a span of some years.
+
+```{r Price vs Date graph of Top 5 Cryptocurrencies}
   setwd("C:/Users/Saurabh/Desktop/8th Sem Project/Data")
   btcData <- read.csv('btc.csv')
   btcData$Date<-as.character(btcData$Date)
@@ -23,12 +56,67 @@ So here we plot a graph showing the higest price attained by each of these Crypt
   bchData <- read.csv('BCH.csv')
   bchData$Date<-as.character(bchData$Date)
   bchData$Date <- as.Date(bchData$Date,format='%Y-%m-%d')
-  ltcData <- read.csv('LTC.csv')
-  ltcData$Date<-as.character(ltcData$Date)
-  ltcData$Date <- as.Date(ltcData$Date,format='%Y-%m-%d')
+  DOGEData <- read.csv('DOGE.csv')
+  DOGEData$Date<-as.character(DOGEData$Date)
+  DOGEData$Date <- as.Date(DOGEData$Date,format='%Y-%m-%d')
+  KinData <- read.csv('KIN.csv')
+  KinData$Date<-as.character(KinData$Date)
+  KinData$Date <- as.Date(KinData$Date,format='%Y-%m-%d')
   library(dplyr)
-  df1<- btcData %>%bind_rows(ethData,bchData,ltcData)
+  df1<- btcData %>%bind_rows(ethData,bchData,DOGEData,KinData)
   library(plotly)
-  plot_ly(x=df1$Date,y=df1$High,type='scatter',mode='lines',color=df1$coin)
+  plot_ly(x=df1$Date,y=df1$High,type='scatter',mode='lines',color=df1$coin)%>%
+  layout(xaxis =list(title='Year'), yaxis = list(title='Price in USD'))
 ```
 
+As it is evident from the above Time Series, that Bitcoin is the Cryptocurrency with the highest valuation throughout the the time. Bitcoin Cash remains second. The other two coins, Ether and Litecoin always had their prcies lower than BTC and BCH but they too saw a huge increase in the market cap.
+
+```{r}
+setwd("C:/Users/Saurabh/Desktop/8th Sem Project/Data")
+btcData<- read.csv('btc.csv')
+bchData <- read.csv('bch.csv')
+ethData <- read.csv('ETH.csv')
+DogeData <- read.csv('Doge.csv')
+KinData <- read.csv('KIN.csv')
+
+btcData$Date<-as.character(btcData$Date)
+btcData$Date <- as.Date(btcData$Date,format='%Y-%m-%d')
+
+
+ethData$Date<-as.character(ethData$Date)
+ethData$Date <- as.Date(ethData$Date,format='%Y-%m-%d')
+
+
+bchData$Date<-as.character(bchData$Date)
+bchData$Date <- as.Date(bchData$Date,format='%Y-%m-%d')
+
+DogeData$Date<-as.character(DogeData$Date)
+DogeData$Date <- as.Date(DogeData$Date,format='%Y-%m-%d')
+
+KinData$Date<-as.character(KinData$Date)
+KinData$Date <- as.Date(KinData$Date,format='%Y-%m-%d')
+
+openData <-  function(coinData){
+  print(ggplot(data=coinData,aes(x=coinData$Date,y=coinData$Close))+
+          geom_line(color="blue"))
+}
+
+closeData <-  function(coinData){
+  print(ggplot(data=coinData,aes(x=coinData$Date,y=coinData$Close))+
+          geom_line(color="yellow"))
+}
+highData <-  function(coinData){
+  print(ggplot(data=coinData,aes(x=coinData$Date,y=coinData$High))+
+          geom_line(color="blue"))
+}
+
+lowData <-  function(coinData){
+  print(ggplot(data=coinData,aes(x=coinData$Date,y=coinData$Low))+
+          geom_line(color="yellow"))
+}
+
+openData(btcData)
+closeData(btcData)
+lowData(btcData)
+highData(btcData)
+```

@@ -31,7 +31,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 4 - On Jan 1, 2014 the price of Bitcoin fell to 775.35 USD and it continued falling after, sometimes going up.This happened mainly because MT GOX , the largest Bitcoin exchange at that time, was hacked.
 
-5 - About 850,000 bitcoins were stolen forcing MT GOX, which at that time was handling 70% of the Bitcoin network's transactions, to shut down. 
+5 - About 850,000 bitcoins amounting to $450 million were stolen forcing MT GOX, which at that time was handling 70% of the Bitcoin network's transactions, to shut down. 
 
 6 - 2016 proved to be an amazing year for Bitcoin, with the mining rewards halving from 25 BTC to 12.5 BTC, limiting the supply and pushing the trade price of Bitcoin to highs not seen since Mt Gox was around. This eventually led to a significant increase in Bitcoin prices in 2017.
 
@@ -41,7 +41,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 9 - In May 2017, Bitcoin prices touched $2000 for the first time. Thereafter, it continued increasing.
 
-10 - On June 15, Bitcoin briefly crashes by 19% overnight, just days after breaking past the $3,000 milestone. 
+10 - On June 15, Bitcoin briefly crashes by 19% overnight, just days after breaking past the $3,000 milestone.
 
 11 - On Nov 28, Bitcoin price passes $10000 for the first time. Hour laters the price tops $11000 and keeps powering higher.
 

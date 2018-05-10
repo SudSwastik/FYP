@@ -127,7 +127,7 @@ treemap(df1, index = 'formatted_market_cap', vSize = 'market_cap_usd', title = '
 
 
 
-total.file<- read.csv("C:/Users/sudarshan/FYP/Data/CryptocoinsHistoricalPrices.csv")
+total.file<- read.csv("C:/Users/Saurabh/Desktop/FYP/Data/CryptocoinsHistoricalPrices.csv")
 length(total.file$High)
 head(total.file)
 
@@ -137,7 +137,7 @@ total.file$Date<-as.character(total.file$Date)
 #changed date from character to Date format
 total.file$Date <- as.Date(total.file$Date,format='%Y-%m-%d')
 total.file$Date
-
+library(dplyr)
 #added new column year and month to the dataset
 new.total.file<- total.file %>% mutate(Year= format(as.Date(total.file$Date, format="%Y-%m-%d"),"%Y"))%>%
   mutate(Month=format(as.Date(total.file$Date, format="%Y-%m-%d"),"%m"))

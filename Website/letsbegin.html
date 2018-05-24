@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Page Title -->
+  <title>First Things First</title>
+  <!-- / -->
+
+  <!---Font Icon-->
+  <link href="static/plugin/font-awesome/css/fontawesome-all.min.css" rel="stylesheet">
+  <link href="static/plugin/et-line/style.css" rel="stylesheet">
+  <link href="static/plugin/themify-icons/themify-icons.css" rel="stylesheet">
+  <!-- / -->
+
+  <!-- Plugin CSS -->
+  <link href="static/plugin/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/plugin/owl-carousel/css/owl.carousel.min.css" rel="stylesheet">
+  <!-- / -->
+
+  <!-- Theme Style -->
+  <link href="static/css/styles.css" rel="stylesheet">
+  <link href="static/css/color/default.css" rel="stylesheet" id="color_theme">
+  <!-- / -->
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.png" />
+  <!-- / -->
+</head>
+
+<!-- Body Start -->
+<body>
+
+  <!-- Loading -->
+  <div id="loading">
+    <div class="load-circle"><span class="one"></span></div>
+  </div>
+  <!-- / -->
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg">
+        <!-- Brand -->
+        <a class="navbar-brand" href="index-2.html">VTU 8th Sem Project <span class="theme-bg"></span></a>
+        <!-- / -->
+
+        <!-- Mobile Toggle -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarmoxo" aria-controls="navbarmoxo" aria-expanded="false" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <!-- / -->
+
+        <!-- Top Menu -->
+        <div class="collapse navbar-collapse justify-content-end" id="navbarmoxo">
+          <ul class="navbar-nav ml-auto">
+            <li><a class="nav-link" href="index.html">Home</a></li>
+            <li><a class="nav-link active" href="features.html">Let's Begin</a></li>
+            <li><a class="nav-link" href="btc.html">BTC</a></li>
+            <li><a class="nav-link" href="delta.html">Delta</a></li>
+            <li><a class="nav-link-btn" href="https://github.com/SudSwastik/FYP" target="_blank" >Github</a></li>
+          </ul>
+        </div>
+        <!-- / -->
+      </nav> <!-- Navbar -->     
+    </div>
+  </header>
+  <!-- Header End -->
+  
+  <!-- Main Start -->
+  <main>
+
+    <!-- Page Header -->
+    <section class="page-header theme-g-bg particles-box">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-12 col-lg-10 text-center">
+            <h2>Let's Begin</h2>
+  
+          </div>
+        </div>
+      </div> <!-- container -->
+    </section>
+    <!-- / -->
+
+    <!-- Feature -->
+    <section class="feature-section p-60px-tb md-p-50px-tb sm-p-40px-tb">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center m-40px-b sm-m-20px-b">
+            <div class="section-title">
+              <span class="theme-g-bg"></span>
+              <!-- <h2>What is Software?</h2> -->
+              <p>We have a data containing data of 1320 types of Cryptocurrencies. This data contains about 65000 observations of 10 variables. These 10 variables are Date, Open, High, Low, Close, Volume, Market.Cap, coin and Delta.</p><br/><br/>
+              <p>
+                <b> Date :</b>  Date of observation<br/><br/>
+                <b>Open :</b>  Opening price on the given day<br/><br/>
+                <b>High :</b> Highest price on the given day<br/><br/>
+                <b>Low : </b>Lowest price on the given day<br/><br/>
+                <b>Close :</b> Closing price on the given day<br/><br/>
+                <b>coin : </b>Name of the cryptocurrency<br/><br/>
+                <b>Volume :</b> Volume of transactions on the given day<br/><br/>
+                <b>Market Cap :</b> Market capitalization in USD<br/><br/></p>
+                <p>So to find out the most dominant Cryptocurrencies in the market, we plotted a bar graph of the Top 5 Cryptocurrencies in the market.</p><br/><br/>
+                  <div class="container">
+                    <div class="jumbotron" style="padding: 10px 10px 10px 10px; background-color: ##F5F5F5">
+                      <p style="text-align: 'left';font-family: monospace; font-size: 14px" >  
+                        setwd("<i><b>C:/Users/Saurabh/Desktop/8th Sem Project/Data</b></i>")<br/>    
+                        file.list &lt;- list.files(path=<i><b>&quot;C:/Users/Saurabh/Desktop/8th Sem Project/Data&quot;</b></i>)<br/>
+                        coinName = c()<br/>
+                        highestMarketCap = c()<br/>
+                        for</span>(i in 1:length(file.list)){<br/>
+                          &ensp;&ensp;file.df &lt;- read.csv(file.list[i],header = TRUE)<br/>
+                          &nbsp;&nbsp;maxVal &lt;- gsub(&quot;,&quot;,&quot;&quot;,max(as.character(file.df$Market.Cap)))<br/>
+                          &nbsp;&nbsp;maxVal &lt;- as.numeric(maxVal)<br/>
+                          &nbsp;&nbsp;highestMarketCap &lt;- c(highestMarketCap,maxVal)<br/>
+                          &nbsp;&nbsp;coinName &lt;- c(coinName, as.character(file.df$coin[[1]]))<br/>
+                        }
+                         newdf <- data.frame(coinName,highestMarketCap)<br/>
+                         library(dplyr)<br/>
+                         newdf <- arrange(newdf,coinName,highestMarketCap)<br/>
+                         newdf <- arrange(newdf,desc(highestMarketCap))<br/>
+                         topfive <- newdf[seq(1:5),]<br/>
+                         library&emsp;(ggplot2)<br/>
+                         ggplot(topfive, aes(x=topfive$coinName,y = topfive$highestMarketCap,fill=topfive$coinName))+<br/>
+                         geom_bar(stat = "identity")+xlab("Coins")+ylab("Market Cap")+ggtitle("Top 5 Cryptocurrencies")<br/>             
+                       </p>
+                    </div>
+                  </div>
+                <img src="images/TopFiveCryptocurrencies.png" style="width:80%;height: 80%"/> 
+                <p> From the above graph, it is evident that the Top 5 Cryptocurrencies by their Market Cap are : </p>
+                <p>
+                 • Bitcoin(BCH)<br/>
+                 • Bitcoin Cash(bch)<br/>
+                 • Etherium(ETH)<br/>
+                 • DOGEE<br/>
+                 • KIN<br/><br/>
+                </p>
+               <p>So here we plot a graph showing the highest price attained by each of these Cryptocurrencies over a span of some years.</p><br/><br/>
+               <div class="container">
+                    <div class="jumbotron" style="padding: 10px 10px 10px 10px; background-color: ##F5F5F5">
+                      <p style="text-align: 'left';font-family: monospace; font-size: 14px" >  
+                        btcData <- read.csv('btc.csv')<br/>
+                        btcData$Date<-as.character(btcData$Date)<br/>
+                        btcData$Date <- as.Date(btcData$Date,format='%Y-%m-%d')<br/>
+                        ethData <- read.csv('ETH.csv')<br/>
+                        ethData$Date<-as.character(ethData$Date)<br/>
+                        ethData$Date <- as.Date(ethData$Date,format='%Y-%m-%d')<br/>
+                        bchData <- read.csv('BCH.csv')<br/>
+                        bchData$Date<-as.character(bchData$Date)<br/>
+                        bchData$Date <- as.Date(bchData$Date,format='%Y-%m-%d')<br/>
+                        DOGEData <- read.csv('DOGE.csv')<br/>
+                        DOGEData$Date<-as.character(DOGEData$Date)<br/>
+                        DOGEData$Date <- as.Date(DOGEData$Date,format='%Y-%m-%d')<br/>
+                        KinData <- read.csv('KIN.csv')<br/>
+                        KinData$Date<-as.character(KinData$Date)<br/>
+                        KinData$Date <- as.Date(KinData$Date,format='%Y-%m-%d')<br/>
+                        library(dplyr)<br/>
+                        df1<- btcData %>%bind_rows(ethData,bchData,DOGEData,KinData)<br/>
+                        plot_ly(x=df1$Date,y=df1$High,type='scatter',mode='lines',color=df1$coin)%>%<br/>
+                        layout(xaxis =list(title='Year'), yaxis = list(title='Price in USD'))<br/>         
+                       </p>
+                    </div>
+                  </div>
+                  <img src="images/TimeSeriesOfTopFiveCryptocurrencies.png" style="width:80%;height: 80%"/> 
+                  <p>As it is evident from the above Time Series, that Bitcoin is the Cryptocurrency with the highest valuation throughout the the time. Bitcoin Cash remains second. The other two coins, Ether and Litecoin always had their prcies lower than BTC and BCH but they too saw a huge increase in the market cap with time.</p>
+            </div>
+          </div> <!-- col -->
+        </div> <!-- row -->
+
+       
+
+    
+
+   
+
+        </div> <!-- row -->
+      </div> <!-- container -->
+    </section>
+    <!-- / -->
+
+  </main>
+  <!-- Main End -->
+
+<!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+     
+      <div class="row">
+        <div class="col-12 footer-copy">
+          <p class="m-0px">Created by Saurabh Prakash</p>
+        </div><!-- col -->
+      </div> <!-- row -->
+    </div> <!-- container -->   
+  </footer>
+  <!-- / -->
+
+  <!-- jQuery -->
+  <script src="static/js/jquery-3.2.1.min.js"></script>
+  <script src="static/js/jquery-migrate-3.0.0.min.js"></script>
+
+  <!-- Plugins -->
+  <script src="static/plugin/bootstrap/js/popper.min.js"></script>
+  <script src="static/plugin/bootstrap/js/bootstrap.min.js"></script>
+  <script src="static/plugin/owl-carousel/js/owl.carousel.min.js"></script>
+  <!-- custom -->
+  <script src="static/js/custom.js"></script>
+
+</body>
+<!-- Body End -->
+
+</html>

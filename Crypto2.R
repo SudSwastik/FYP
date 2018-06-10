@@ -105,19 +105,6 @@ for (i in 1:length(file.list)){
 length(highCoins)
 highCoins
 
-##Treemap
-library(coinmarketcapr)
-plot_top_5_currencies()## This is based on Market Cap
-market_today <- get_marketcap_ticker_all() ##To extract Global Market Cap of Leading Cryptocurrencies
-head(market_today[,1:8])
-library(treemap)
-df1 <- na.omit(market_today[,c('id','market_cap_usd')])
-df1$market_cap_usd <- as.numeric(df1$market_cap_usd)
-df1$formatted_market_cap <-  paste0(df1$id,'\n','$',format(df1$market_cap_usd,big.mark = ',',scientific = F, trim = T))
-treemap(df1, index = 'formatted_market_cap', vSize = 'market_cap_usd', title = 'Cryptocurrency Market Cap', fontsize.labels=c(12, 8), palette='RdYlGn')
-
-
-
 
 total.file<- read.csv("C:/Users/sudarshan/FYP/Data/CryptocoinsHistoricalPrices.csv")
 length(total.file$High)

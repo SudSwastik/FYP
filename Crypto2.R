@@ -157,6 +157,81 @@ analysis<-function(openDataCoin){
 
 
 
+#           checking outliers of open column for btc
+
+
+BTC.2014 <- new.total.file%>%filter(coin=="BTC")%>%filter(Year==2014)
+BTC.Open.2014<-BTC.2014$Open
+
+
+#boxplot shows no outlier
+boxplot(BTC.Open.2014,
+        horizontal = TRUE,
+        las=1,
+        notch = TRUE,
+        col="slategray3",
+        ylim=c(100,1000),
+        boxwex=0.5,
+        whisklty=1,
+        main="Opening of btc for the year 2014"
+        ,xlab="btc Open ")
+
+
+BTC.2015 <- new.total.file%>%filter(coin=="BTC")%>%filter(Year==2015)
+BTC.Open.2015<-BTC.2015$Open
+
+# boxplot shows outlier
+boxplot(BTC.Open.2015,
+        horizontal = TRUE,
+        las=1,
+        notch = TRUE,
+        col="slategray3",
+        ylim=c(100,500),
+        boxwex=0.5,
+        whisklty=1,
+        main="Opening of btc for the year 2015"
+        ,xlab="btc Open ")
+
+#analysis
+analysis(BTC.Open.2015)
+
+
+BTC.2016 <- new.total.file%>%filter(coin=="BTC")%>%filter(Year==2016)
+BTC.Open.2016<-BTC.2016$Open
+
+# boxplot shows  no outlier
+boxplot(BTC.Open.2016,
+        horizontal = TRUE,
+        las=1,
+        notch = TRUE,
+        col="slategray3",
+        ylim=c(100,1000),
+        boxwex=0.5,
+        whisklty=1,
+        main="Opening of btc for the year 2016"
+        ,xlab="btc Open ")
+
+
+BTC.2017 <- new.total.file%>%filter(coin=="BTC")%>%filter(Year==2017)
+BTC.Open.2017<-BTC.2017$Open
+
+# boxplot shows outlier
+boxplot(BTC.Open.2017,
+        horizontal = TRUE,
+        las=1,
+        notch = TRUE,
+        col="slategray3",
+        ylim=c(800,12000),
+        boxwex=0.5,
+        whisklty=1,
+        main="Opening of btc for the year 2017"
+        ,xlab="btc Open ")
+
+#analysis
+analysis(BTC.Open.2017)
+
+
+
 #plot for analysing the distribution of the delta of all coins 
 #in a yearly format
 for(y in c("2014","2015","2016","2017","2018")){

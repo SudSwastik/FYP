@@ -212,11 +212,33 @@ df1$month <- c("jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov"
 df1
 
 # bar graph of monthly delta value
-ggplot(data= df1,aes(y=df1$BTC,x=df1$month))+geom_bar(stat='identity')
-ggplot(data= df1,aes(y=df1$BCH,x=df1$month))+geom_bar(stat='identity')
-ggplot(data= df1,aes(y=df1$DOGE,x=df1$month))+geom_bar(stat='identity')
-ggplot(data= df1,aes(y=df1$ETH,x=df1$month))+geom_bar(stat='identity')
-ggplot(data= df1,aes(y=df1$BTC,x=df1$month))+geom_bar(stat='identity')
+ggplot(data= df1,aes(y=df1$BTC,x=df1$month))+geom_bar(stat='identity')+
+  labs(x="Month",y="Delta")+
+  ggtitle("Monthly delta of BTC for the year 2017")
+
+
+ggplot(data= df1,aes(y=df1$BCH,x=df1$month))+geom_bar(stat='identity')+
+  labs(x="Month",y="Delta")+
+  ggtitle("Monthly delta of BCH for the year 2017")
+
+
+
+ggplot(data= df1,aes(y=df1$DOGE,x=df1$month))+geom_bar(stat='identity')+
+  labs(x="Month",y="Delta")+
+  ggtitle("Monthly delta of DOGE for the year 2017")
+
+
+ggplot(data= df1,aes(y=df1$ETH,x=df1$month))+geom_bar(stat='identity')+
+  labs(x="Month",y="Delta")+
+  ggtitle("Monthly delta of ETH for the year 2017")
+
+
+
+ggplot(data= df1,aes(y=df1$KIN,x=df1$month))+geom_bar(stat='identity')+
+  labs(x="Month",y="Delta")+
+  ggtitle("Monthly delta of KIN for the year 2017")
+
+
 
 
 

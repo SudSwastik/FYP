@@ -139,6 +139,23 @@ summary(new.total.file)
 
 
 
+#function used for analysis of all coin data for open varibale 
+analysis<-function(openDataCoin){
+  print(mean(openDataCoin))
+  print(median(openDataCoin))
+  print(sqrt(var(openDataCoin)))
+  print(max(openDataCoin)-min(openDataCoin))
+  print(hist(openDataCoin))
+  print(skewness(openDataCoin))
+  print(kurtosis(openDataCoin))
+  print(hist(openDataCoin,prob=TRUE))
+  print(curve(dnorm(x,mean(openDataCoin),sd(openDataCoin)),col="red",add=TRUE))
+  print(qqnorm(openDataCoin))
+  print(qqline(openDataCoin,col="red"))
+  print(qqPlot(openDataCoin,distribution = "norm"))
+}
+
+
 
 #plot for analysing the distribution of the delta of all coins 
 #in a yearly format

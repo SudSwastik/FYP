@@ -271,6 +271,49 @@ boxplot(BCH.Open.2018,
         ,xlab="bch Open ")
 
 
+#           checking outliers of open column for eth
+
+
+ETH.2015 <- new.total.file%>%filter(coin=="ETH")%>%filter(Year==2015)
+ETH.Open.2015<-ETH.2015$Open
+
+#boxplot shows  outlier
+boxplot(ETH.Open.2015,
+        horizontal = TRUE,
+        las=1,
+        notch = TRUE,
+        col="slategray3",
+        ylim=c(0,4),
+        boxwex=0.5,
+        whisklty=1,
+        main="Opening of eth for the year 2015"
+        ,xlab="eth Open ")
+
+#analysis
+analysis(ETH.Open.2015)
+
+
+
+ETH.2017 <- new.total.file%>%filter(coin=="ETH")%>%filter(Year==2017)
+ETH.Open.2017<-ETH.2017$Open
+
+#boxplot shows outlier
+boxplot(ETH.Open.2017,
+        horizontal = TRUE,
+        las=1,
+        notch = TRUE,
+        col="slategray3",
+        ylim=c(0,4),
+        boxwex=0.5,
+        whisklty=1,
+        main="Opening of eth for the year 2017",
+        xlab="eth Open ")
+
+#analysis
+analysis(ETH.Open.2017)
+
+
+
 
 #plot for analysing the distribution of the delta of all coins 
 #in a yearly format

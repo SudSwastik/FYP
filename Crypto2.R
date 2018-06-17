@@ -3,6 +3,15 @@ library(dplyr)
 library(ggplot2)
 #library(plotly)
 
+path <- "C:/Users/Saurabh/Desktop/FYP/Data2"
+fs <- list.files(path, pattern = glob2rx("*.csv"))
+R> fs
+for (f in fs) {
+  fname <- file.path(path, f)             ## current file name
+  df <- read.csv(fname)                   ## read file
+  df <- select(df,-1)                     ## delete column B
+  write.csv(df, fname, row.names = FALSE) ## write it out
+}
 
 btcData<- read.csv('btc.csv')
 bchData <- read.csv('bch.csv')
@@ -392,6 +401,15 @@ ggplot(data= df1,aes(y=df1$KIN,x=df1$month))+geom_bar(stat='identity')+
   labs(x="Month",y="Delta")+
   ggtitle("Monthly delta of KIN for the year 2017")
 
-
+#Removing first column indicating count from each data subset 
+path <- "C:/Users/Saurabh/Desktop/FYP/Data2"
+fs <- list.files(path, pattern = glob2rx("*.csv"))
+R> fs
+for (f in fs) {
+  fname <- file.path(path, f)             ## current file name
+  df <- read.csv(fname)                   ## read file
+  df <- select(df,-1)                     ## delete column B
+  write.csv(df, fname, row.names = FALSE) ## write it out
+}
 
 

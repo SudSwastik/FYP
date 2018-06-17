@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Page Title -->
-  <title>Moxo - Landing Template</title>
+  <title>Delta</title>
   <!-- / -->
 
   <!---Font Icon-->
@@ -45,11 +45,11 @@
     <div class="container">
       <nav class="navbar navbar-expand-lg">
         <!-- Brand -->
-        <a class="navbar-brand" href="index-2.html">VTU 8th Sem Project<span class="theme-bg"></span></a>
+        <a class="navbar-brand" href="#">VTU 8th Sem Project <span class="theme-bg"></span></a>
         <!-- / -->
 
         <!-- Mobile Toggle -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarmoxo" aria-controls="navbarmoxo" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarshark" aria-controls="navbarshark" aria-expanded="false" aria-label="Toggle navigation">
             <span></span>
             <span></span>
             <span></span>
@@ -57,12 +57,15 @@
         <!-- / -->
 
         <!-- Top Menu -->
-        <div class="collapse navbar-collapse justify-content-end" id="navbarmoxo">
+        <div class="collapse navbar-collapse justify-content-end" id="navbarshark">
           <ul class="navbar-nav ml-auto">
             <li><a class="nav-link" href="index.html">Home</a></li>
-            <li><a class="nav-link" href="letsbegin.html">Features</a></li>
-            <li><a class="nav-link" href="btc.html">Price</a></li>
+            <li><a class="nav-link" href="letsbegin.html">Let's Begin</a></li>
+            <li><a class="nav-link" href="btc.html">BTC</a></li>
             <li><a class="nav-link active" href="delta.html">Delta</a></li>
+            <li><a class="nav-link" href="timeSeries.html">Time Series</a></li>
+            <li><a class="nav-link" href="viewdata.html">View Data</a></li>
+
             <li><a class="nav-link-btn" href="https://github.com/SudSwastik/FYP" target="_blank" >Github</a></li>
           </ul>
         </div>
@@ -75,60 +78,170 @@
   <!-- Main Start -->
   <main>
 
-    <!-- Page Header -->
+    <!-- Home Banner -->
     <section class="page-header theme-g-bg">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-12 col-lg-10 text-center">
             <h2>Delta</h2>
-
           </div>
         </div>
       </div> <!-- container -->
     </section>
     <!-- / -->
 
-     <!-- Feature -->
-    <section class="feature-section p-60px-tb md-p-50px-tb sm-p-40px-tb">
+    <!-- Price -->
+    <section class="price-section p-60px-tb sm-p-40px-tb">
       <div class="container">
         <div class="row">
-          <div class="col-md-12 text-center m-40px-b sm-m-20px-b">
+          <div class="col-md-12 text-center m-40px-b sm-m-30px-b">
             <div class="section-title">
               <span class="theme-g-bg"></span>
-              <!-- <h2>What is Software?</h2> -->
-              <p>We have a data containing data of 1320 types of Cryptocurrencies. This data contains about 65000 observations of 10 variables. These 10 variables are Date, Open, High, Low, Close, Volume, Market.Cap, coin and Delta.</p><br/><br/>
-              <p>We have a data containing data of 1320 types of Cryptocurrencies. This data contains about 65000 observations of 10 variables. These 10 variables are Date, Open, High, Low, Close, Volume, Market.Cap, coin and Delta.</p><br/><br/>
-              <p>We have a data containing data of 1320 types of Cryptocurrencies. This data contains about 65000 observations of 10 variables. These 10 variables are Date, Open, High, Low, Close, Volume, Market.Cap, coin and Delta.</p><br/><br/>
-              <p>We have a data containing data of 1320 types of Cryptocurrencies. This data contains about 65000 observations of 10 variables. These 10 variables are Date, Open, High, Low, Close, Volume, Market.Cap, coin and Delta.</p><br/><br/>
-              <p>We have a data containing data of 1320 types of Cryptocurrencies. This data contains about 65000 observations of 10 variables. These 10 variables are Date, Open, High, Low, Close, Volume, Market.Cap, coin and Delta.</p><br/><br/>
-              <p>We have a data containing data of 1320 types of Cryptocurrencies. This data contains about 65000 observations of 10 variables. These 10 variables are Date, Open, High, Low, Close, Volume, Market.Cap, coin and Delta.</p><br/><br/>
-              
-             
+              <p>Let's start with finding the number of coins whose prices have gone more than 1000 USD.</p><br/><br/>
+  				<div class="container">
+                    <div class="jumbotron" style="padding: 10px 10px 10px 10px; background-color: ##F5F5F5">
+                      <p style="text-align: 'left';font-family: monospace; font-size: 14px" >  
+							highCoins = c()<br/>
+							for (i in 1:length(file.list)){<br/>
+							file.df <- read.csv(file.list[i],header = TRUE)<br/>
+							max.value <-max(file.df$High,na.rm=TRUE)<br/>
+							if(max.value >= 1000)<br/>
+							{<br/>
+							highCoins <- c(highCoins,as.character(file.df$coin[1]))<br/>
+							next<br/>
+							}<br/>
+							}<br/>
+							length(highCoins)<br/>
+							highCoins<br/>
+                       </p><br/>
+					</div>
+                 </div>
+               <p>The command <i>length(highCoins)</i> gives <i>18</i> as output which tells us that there have only been 18 coins whose prices have gone more than 1000 USD. So to know the names of these, we printed their names and we got the following as output</p> <br/><br/>
+               <div class="container">
+                    <div class="jumbotron" style="padding: 10px 10px 10px 10px; background-color: ##F5F5F5">
+                      <p style="text-align: 'left';font-family: monospace; font-size: 14px" >  
+						 [1] "300"     "42"      "B2X"     "BCH"     "BITBTC"  "BITGOLD" "BT1"     "BT2"<br/>    
+						 [9] "BTC"     "BTWTY"   "CEFS"    "DASH"    "EDR"     "ETH"     "JINN"    "MKR"<br/>    
+						[17] "NANOX"   "PBT"
+                       </p><br/>
+					</div>
+                 </div>
+               <p> Out of these 18 coins there are only a few which are known to masses. These include coins like BTC, BCH, ETH. Also the market capitalization of other coins is not very high. So this brings us to a conclusion that having a high price does not necessarily indicate that the coin would be profitable.</p> 
+              <p>So to check the profitability of a coin, we introduced a new column known as Delta to our data. Delta, for a particular day, is the difference of Close and Open divided by Open.</p>
+              <p style="text-align: center;font-size: 14px"><i>Delta = (Close - Open)/Open</i></p><br/><br/>
+              	<p>This parameter Delta gives us an idea of direction in which the prices of different cryptocurrencies change over a period
+				of time. By analyzing this direction, the safeness of a Cryptocurrency can be found.</p><br/><br/>
+				<p>If the Delta for a particular coin, over a period of time, is greater than 1, that means is profitable to invest in the coin. Whereas if the Delta, for a coin, remains lower than 1, the coin is not so attractive as an investment.</p><br/><br/>
+				<p>So let us plot Delta for all the coins from 2014 to 2018.</p><br/><br/>
+
+                <div class="container">
+                    <div class="jumbotron" style="padding: 10px 10px 10px 10px; background-color: ##F5F5F5">
+                      <p style="text-align: 'left';font-family: monospace; font-size: 14px" >  
+							total.file<- read.csv("your_path_for_data")<br/>
+							length(total.file$High)<br/>
+							head(total.file)<br/>
+							total.file$Date<-as.character(total.file$Date)<br/>
+							total.file$Date <- as.Date(total.file$Date,format='%Y-%m-%d')<br/>
+							total.file$Date<br/>
+							new.total.file<- total.file %>% mutate(Year=<br/>
+							format(as.Date(total.file$Date, format="%Y-%m-%d"),"%Y"))%>%<br/>
+							mutate(Month=format(as.Date(total.file$Date, format="%Y-%m-%d"),"%m"))<br/>
+							head(new.total.file)<br/>
+							summary(new.total.file)<br/>
+							year<-c("2014","2015","2016","2017","2018")<br/>
+							typeof(year)<br/>
+							typeof(new.total.file$Year)<br/>
+							for(y in c("2014","2015","2016","2017","2018")){<br/>
+							delta.yearly<-new.total.file%>%group_by(Year)%>%filter(Year==y)<br/>
+							delta.yearly<br/>
+							print(ggplot(delta.yearly[delta.yearly$Delta>1&delta.yearly$Delta<10,],<br/>
+							aes(x=Date,y=Delta, color=coin)) +geom_point()+<br/>
+							scale_x_date(date_breaks = "1 month", date_labels = "%B")+<br/>
+							theme(legend.position="none"))<br/>
+							}<br/>
+                       </p><br/><br/>
+					</div>
+                  </div>
+                  <img src="images/Delta2014.png" style="width:80%;height: 80%"/> <br/>
+                  <p>In the above scatter plot, each point represents a coin. As we can see, the number of points are a bit scarce here indicating the presence of relatively small number of coins in 2014.</p>
+                  <img src="images/Delta2015.png" style="width:80%;height: 80%"/> <br/>
+                  <p>Delta is a column that we have added ourselves to the data. Delta, for a day, is the difference
+					of Close and Open divided by Open. So, if delta for a particular coin is greater than 1, it
+					indicates that investing in the coin is profitable. While if it is less than one, that indicates that
+					the coin is not profitable. In the above graph, each point represents a coin. As we can see, tha
+					number of points are a bit scarce here.</p>
+				  <img src="images/Delta2016.png" style="width:80%;height: 80%"/> <br/>
+				  <p>Many more new coins came in the market in 2016. This indicates that the Cryptocurrency
+                    market is a growing market.</p>
+				  <img src="images/Delta2017.png" style="width:80%;height: 80%"/> <br/>
+				  <p>The graph has become more condensed indicating a significant increase in the number of
+					 coins from 2014 to 2017.</p>
+				  <img src="images/Delta2018.png" style="width:80%;height: 80%"/> <br/>
+				  <p>Since our data did not contain much information about all the coins for the year 2018, the
+					graph here is scarce. If we plot the scatter plot based on the real time data, this plot will
+					become even more condense.</p><br/><br/>
+				<p> Now let's plot the distribution of the count of all coins delta whose value exceeds one</p><br/><br/>
+
+				<div class="container">
+                    <div class="jumbotron" style="padding: 10px 10px 10px 10px; background-color: ##F5F5F5">
+                      <p style="text-align: 'left';font-family: monospace; font-size: 14px" >  
+						ggplot(total.file[total.file$Delta > 1 & total.file$Delta < 10, ],<br/>
+						aes(x=Delta, color=coin)) +geom_histogram() +<br/>
+						theme(legend.position="none")<br/>
+                       </p><br/><br/>
+					</div>
+                 </div>
+                <p> We get the following graph</p><br/><br/>
+                <img src="images/DeltaGreaterThanOne.JPG" style="width:80%;height: 80%"/> <br/>
+                <p>As the intuition says, most number of coins have delta less than 2. A very few coins have
+					seen their delta going more than 5.</p>
+                <p> Next we plot the distribution of the count of all coins delta whose value is less than one</p><br/><br/>
+
+				<div class="container">
+                    <div class="jumbotron" style="padding: 10px 10px 10px 10px; background-color: ##F5F5F5">
+                      <p style="text-align: 'left';font-family: monospace; font-size: 14px" >  
+							ggplot(total.file[total.file$Delta <1, ], aes(x=Delta, color=coin)) +<br/>
+							geom_histogram() +<br/>
+							theme(legend.position="none")<br/>
+                       </p><br/><br/>
+					</div>
+                 </div>
+                <p> We get the following graph</p><br/><br/>
+                <img src="images/DeltaLessThanOne.JPG" style="width:80%;height: 80%"/> <br/><br/>
+                <p>Since there are coins whose delta is less than 1, it shows that there are coins which are not
+					safe to incest in. Also, maximum number of coins in this histogram has delta between 0 and
+					1. It shows that there many coins in which investing doesn’t return high profits but it also
+					doesn’t let the investor suffer loss</p>
             </div>
           </div> <!-- col -->
         </div> <!-- row -->
 
-       
-
-    
+      
+   
 
    
 
+       
+
+
+
         </div> <!-- row -->
-      </div> <!-- container -->
+      </div>
     </section>
+    <!-- Price Page -->
+    
     <!-- / -->
 
   </main>
   <!-- Main End -->
 
-<!-- Footer -->
+ <!-- Footer -->
   <footer class="footer">
     <div class="container">
      
       <div class="row">
         <div class="col-12 footer-copy">
-          <p class="m-0px">Created by Saurabh Prakash</p>
+          <p class="m-0px">VTU 8th Sem Project by Saurabh Prakash and Sudarshan Kumar</p>
         </div><!-- col -->
       </div> <!-- row -->
     </div> <!-- container -->   
